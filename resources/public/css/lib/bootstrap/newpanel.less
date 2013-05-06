@@ -1,0 +1,102 @@
+//@import-once "lesshat.less";
+@import-once "../bootstrap/bootstrap.less";
+
+//@import "bootstrap/variables.less"; // Modify this for custom colors, font-sizes, etc
+//@import "bootstrap/mixins.less";
+
+// CSS Reset
+//@import "bootstrap/reset.less";
+
+// // Grid system and page structure
+// @import "bootstrap/scaffolding.less";
+// @import "bootstrap/grid.less";
+// @import "bootstrap/layouts.less";
+
+// // Base CSS
+// @import "bootstrap/type.less";
+// @import "bootstrap/code.less";
+// @import "bootstrap/forms.less";
+// @import "bootstrap/tables.less";
+
+// // Components: common
+// @import "sprites.less";
+// @import "dropdowns.less";
+// @import "wells.less";
+// @import "component-animations.less";
+// @import "close.less";
+
+// // Components: Buttons & Alerts
+// @import "buttons.less";
+// @import "button-groups.less";
+// @import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// // Components: Nav
+// @import "navs.less";
+// @import "navbar.less";
+// @import "breadcrumbs.less";
+// @import "pagination.less";
+// @import "pager.less";
+
+// // Components: Popovers
+// @import "modals.less";
+// @import "tooltip.less";
+// @import "popovers.less";
+
+// // Components: Misc
+// @import "thumbnails.less";
+// @import "media.less";
+// @import "labels-badges.less";
+// @import "progress-bars.less";
+// @import "accordion.less";
+// @import "carousel.less";
+// @import "hero-unit.less";
+
+// // Utility classes
+// @import "utilities.less"; // Has to be last to override when necessary
+
+
+
+.image (@url) {
+    background: url(@url)  no-repeat;
+}
+
+.header-strip {
+    background: url("/img/public/header_bg.png") repeat-x scroll 0 2px transparent;
+    height: 75px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    color: red;
+    
+   
+}
+.logo-holder {
+    position: static;
+    display: inline-block;
+    min-width: 150px;
+    height: 65px;
+    float:left;
+    .logo {
+	background: url("/img/public/logo.png") no-repeat 0 9px;
+	height: 65px;
+	top:0px;
+	min-width: 100px;
+	width: 100%;
+	position:absolute;
+    }
+}
+
+.log-info {
+    position: relative;
+    display:inline-block;
+    top:4px;
+    padding: 5px 10px 0px;
+    .navbar-inner {
+	//padding-right:0x;
+    }
+    li a {
+	.icon-white {.opacity(0.6);}
+	&:hover .icon-white {.opacity(1.0);}
+    }
+}

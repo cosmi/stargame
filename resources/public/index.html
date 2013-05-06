@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet/less" type="text/css" href="/css/styles.less" />
+  <script src="/js/less.js" type="text/javascript"></script>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <title>Czatek.pl</title>
+</head>
+<body>
+<div class="top-bar">
+  <div class="container">
+    <img class="logo" src="/img/logo.png">
+    <div class="info">
+      Ściągnij aplikację na swój telefon! &nbsp;
+      &nbsp;<a target="_blank" href="https://play.google.com/store/apps/details?id=pl.czatek.mobile"><img src="/img/android.png"> </a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+    <div class="intro-wrapper" id="intro">
+      <div class="person-block">
+        <h1>Kim jesteś?</h1>
+        <form id="form-me">
+          <div class="gender-wrapper">
+            <input type="radio" name="gender" value="m" id="gender-user-m"><label class="radio male" for="gender-user-m">&nbsp;</label><input type="radio" name="gender" value="f" id="gender-user-f"><label class="radio female" for="gender-user-f">&nbsp;</label></div>
+          <div class="input-bar"><label for="age-user">Wiek</label><input type="text"
+          name="age" maxlength="2" id="age-user" placeholder="· · · "></div>
+          <div class="input-bar"><span class="select"><select name="loc" id="loc-user">
+            <option value="">Skąd jesteś?</option>
+            <option value="dolnośląskie">dolnośląskie</option>
+            <option value="kujawsko-pomorskie">kujawsko-pomorskie</option>
+            <option value="lubelskie">lubelskie</option>
+            <option value="lubuskie">lubuskie</option>
+            <option value="łódzkie">łódzkie</option>
+            <option value="małopolskie">małopolskie</option>
+            <option value="mazowieckie">mazowieckie</option>
+            <option value="opolskie">opolskie</option>
+            <option value="podkarpackie">podkarpackie</option>
+            <option value="podlaskie">podlaskie</option>
+            <option value="pomorskie">pomorskie</option>
+            <option value="śląskie">śląskie</option>
+            <option value="świętokrzyskie">świętokrzyskie</option>
+            <option value="warmińsko-mazurskie">warmińsko-mazurskie</option>
+            <option value="wielkopolskie">wielkopolskie</option>
+            <option value="zachodniopomorskie">zachodniopomorskie</option>                                  
+          </select>
+          </span></div>
+          <div class="wrong-bar" style="display:none">Wypełnij swoje dane!</div>
+        </form>
+      </div><div class="person-block">
+        <h1>Kogo szukasz?</h1>
+        <form id="form-them">
+          <div class="gender-wrapper">
+            <input type="radio" name="gender" value="m" id="gender-other-m"
+                   ><label class="radio male"
+                           for="gender-other-m">&nbsp;</label><input type="radio" name="gender" value="f" id="gender-other-f"><label class="radio female" for="gender-other-f">&nbsp;</label></div>
+
+
+          <div class="input-bar"><label for="age-other">Wiek</label><input type="text"
+          name="age" maxlength="2" id="age-other" placeholder="· · · "></div>
+          <div class="input-bar"><span class="select"><select name="loc" id="loc-other">
+            <option value="">Skąd</option>
+            <option value="dolnośląskie">dolnośląskie</option>
+            <option value="kujawsko-pomorskie">kujawsko-pomorskie</option>
+            <option value="lubelskie">lubelskie</option>
+            <option value="lubuskie">lubuskie</option>
+            <option value="łódzkie">łódzkie</option>
+            <option value="małopolskie">małopolskie</option>
+            <option value="mazowieckie">mazowieckie</option>
+            <option value="opolskie">opolskie</option>
+            <option value="podkarpackie">podkarpackie</option>
+            <option value="podlaskie">podlaskie</option>
+            <option value="pomorskie">pomorskie</option>
+            <option value="śląskie">śląskie</option>
+            <option value="świętokrzyskie">świętokrzyskie</option>
+            <option value="warmińsko-mazurskie">warmińsko-mazurskie</option>
+            <option value="wielkopolskie">wielkopolskie</option>
+            <option value="zachodniopomorskie">zachodniopomorskie</option>         
+          </select></span></div>
+        </form>
+      </div>
+      
+      <button type="submit" class="btn btn-large btn-primary chat-start">Rozpocznij czat!</button>
+    </div>
+  </div>
+</div>
+
+<div class="content" style="display:none">
+  <div class="container">
+    <div class="chat-wrapper"><div class="chat-left"><div class="chat-tabs" id="chat-tabs">
+        </div>
+        <div class="switch">
+          <input type="checkbox" name="newchat" id="newchat" checked>
+          <label for="newchat">
+            Szukaj nowych
+          </label>
+        </div>
+      </div><div class="chats" id="chats"><div class="no-tab">Trwa szukanie partnera do rozmowy...</div></div></div>
+  </div>
+  </div>
+</div>
+
+
+
+<div id="elements" style="display:none">
+  <div class="them-wrapper msg-wrapper">
+    <div class="them msg">
+      <img src="/img/avatar_female.png">
+      <div class="when">
+        32 minuty temu
+      </div>
+      <div class="text">--placeholder--</div>
+    </div>
+  </div>
+  <div class="me-wrapper msg-wrapper">
+    <div class="me msg">
+      <div class="when">
+        32 minuty temu
+      </div>
+      <div class="text">--placeholder--</div>
+    </div>
+  </div>
+  <div class="quit-msg msg-wrapper">
+    <div class="msg info">
+      <div class="when">
+        32 minuty temu
+      </div>
+      <i class="icon-white icon-exclamation-sign"></i> &nbsp;&nbsp; Rozmówca się rozłączył.
+    </div>
+  </div>
+  <div class="report-msg msg-wrapper">
+    <div class="msg info">
+      <i class="icon-white icon-exclamation-sign"></i> &nbsp;&nbsp; Rozmówca został oznaczony, jako naruszający zasady.
+    </div>
+  </div>
+  <div class="topic-wrapper msg-wrapper">
+    <div class="msg info topic">
+      <i class="icon-white icon-comment"></i> &nbsp;&nbsp; Nowy temat:
+      <span class="text">Placeholder</span>
+    </div>
+  </div>
+
+
+  <button data-target="#placeholder" class="tab">Gienek</button>
+  
+  <div class="chat">
+    <div class="thread">
+      
+    </div>
+    <div class="menu">
+      <textarea class="chat-msg"> </textarea>
+      <button class="left tab-close">Zamknij</button>
+      <button class="left chat-report">Zgłoś użytkownika</button>
+      <button class="chat-topic">Losuj temat</button>
+      <button class="btn-primary chat-send">Wyślij</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="bottom-bar">
+  <div class="container">
+    <a href='#'>Regulamin</a> · <a href='#'>Polityka plików cookie</a>
+  </div>
+</div>
+
+
+<div class="container elements hidden" style="display: none">
+
+  <li class="chat-tab-link"><a class="tab" href="">Label</a><a class="tab-close">X</a></li>
+
+  <div class="chat-msg-local">
+    <p class="content" style="background:#afa"/>
+  </div>
+  
+  <div class="chat-msg-remote">
+    <p class="content" style="background:#aaf"/>
+  </div>
+
+  <div class="chat-msg-topic">
+    <p class="content" style="background:#ffa"/>
+  </div>
+  
+  <div class="chat-msg-unknown">
+    <p class="content"/>
+  </div>
+  
+  <div class="chat-content chat-content-loading">
+    <div class="msgs"></div>
+    <div class="form-inline">
+      <input type="text" class="chat-msg">
+      <button type="submit" class="btn btn-primary chat-send">Wyślij</button>
+      <button type="submit" class="btn btn-primary chat-topic">Losuj temat</button>
+      <button type="submit" class="btn btn-primary chat-report">Zgłoś diabła</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/js/jquery.timeago.js"></script>
+<script type="text/javascript" src="/js/jquery.timeago.pl.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/js/client.js"></script>
+</body>
+</html>
