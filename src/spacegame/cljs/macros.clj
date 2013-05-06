@@ -1,4 +1,4 @@
-(ns chathorse.cljs.macros
+(ns spacegame.cljs.macros
   (:use [jayq.macros]))
 
 (defmacro $-> [sel & args]
@@ -31,7 +31,7 @@
 (defmacro let-remote [[sym [uri & args] :as steps] & body]
   (assert (even? (count steps)) "Uneven number of elements in let-form")
   (assert (= 2 (count steps)) "More than one step not implemented")
-  `(let-remote* [~sym (chathorse.cljs.utils/remote ~uri ~@args)] ~@body)) 
+  `(let-remote* [~sym (spacegame.cljs.utils/remote '~uri ~@args)] ~@body)) 
 
 
 
@@ -42,6 +42,6 @@
 
 (defmacro on-click
   ([$ sel fun]
-     `(chathorse.cljs.main/click ~$ ~sel (fn [] ~fun)))
+     `(spacegame.cljs.main/click ~$ ~sel (fn [] ~fun)))
   ([$ fun]
-     `(chathorse.cljs.main/click ~$ (fn [] ~fun))))
+     `(spacegame.cljs.main/click ~$ (fn [] ~fun))))

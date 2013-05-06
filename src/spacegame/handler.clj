@@ -35,12 +35,24 @@
            (= password (config :admin-pass)))
     {:username username}))
 
+(defmacro FUN [url args & body]
+  `(POST ~url {params# :params}
+     (let [~args (-> params# :args safe-read-string)]
+       (prn-str (do ~@body)))))
+
+
+(defn mongo-tables []
+
+  )
+
 
 (defroutes app-routes
   (context "/admin" []
     (wrap-require-auth (constantly nil) authenticate
                        "The Secret Area" {:body "You're not allowed in The Secret Area!"}))
 
+  (FUN "/plus" [i j]
+    (+ i j))
   (GET "/"  [] (response/resource-response "index.html" {:root "public"}))
   
   (route/resources "/")

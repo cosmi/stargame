@@ -1,4 +1,4 @@
-(ns chathorse.cljs.utils
+(ns spacegame.cljs.utils
   (:require ;[redlobster.promise :as promise]
             [hiccups.runtime :as hiccupsrt]
             [clojure.browser.repl :as repl]
@@ -22,7 +22,7 @@
   
   (:require-macros [hiccups.core :as hiccups])
   (:use-macros [hiccups.core :only [html]]
-               [chathorse.cljs.macros :only [$-> $doto]] 
+               [spacegame.cljs.macros :only [$-> $doto]] 
                [jayq.macros :only [ready queue]])  
   )
  
@@ -36,9 +36,11 @@
 (defn serialize-clj [$elem]
   (into {} (->> $elem .serializeArray js->clj (map #(vector (% "name") (% "value"))))))
 (defn remote [uri & args]
-  (let [params (clj->js (merge {:type "POST"
-                                :data {:args (prn-str args)}}))]
-    (.ajax js/jQuery uri params)))
+  (if (= 'apply uri)
+    (apply remote (apply list* args))
+    (let [params (clj->js (merge {:type "POST"
+                                  :data {:args (prn-str args)}}))]
+      (.ajax js/jQuery uri params))))
 
 
 (def remote-m
