@@ -10,7 +10,8 @@
 (defprotocol PTimedState
   (rewind [_ to-time])
   (get-time [_])
-  (get-value [_]))
+  (get-value [_])
+  (alter-value [_ fun]))
 
 
 (defprotocol PTimedObject
@@ -33,8 +34,15 @@
                                         ;Immutable!
     )
   (get-time [_] timestamp)
-  (get-value [_] value))
+  (get-value [_] value)
+  (alter-value [this fun] (assoc this :value (-> this .value fun))))
 
+
+(defn create-timed-state [timestamp value progress-function]
+  (TimedState. value timestamp progress-function))
+(defn create-linear-timed-state [timestamp value progress-function]
+  (TimedState. value timestamp (fn [v t0 t1]
+                                (progress-function v (- t1 t0)))))
 
 
 (defrecord TimedObject
@@ -67,15 +75,17 @@
        (assert (>= at-time (get-current-time this)))
        (alter event-queue update-in [at-time] conj event))))
   (alter-value! [this fun]
-    (dosync (alter state update-in [:value] fun))))
+    (dosync (alter state alter-value fun))))
 
 
 
-(defn create-timed-object [value initial-time progress-function]
-  (assert (integer? value))
-  (TimedObject. (ref (TimedState. value initial-time progress-function))
-                ;{initial-time nil} daje gwarancję, że mapa będzie zawierać tylko integery (tak działa sorted-map)
-                (ref (sorted-map initial-time nil))))
+(defn create-timed-object
+  ([state]
+     (assert (satisfies? PTimedState state))
+     (TimedObject. (ref state) (ref (sorted-map (get-time state) nil))))
+  ([value initial-time progress-function]
+     (assert (integer? initial-time))
+     (create-timed-object (TimedState. value initial-time progress-function))))
 
 
 
